@@ -1,0 +1,15 @@
+{
+	"manifest_version": 2,
+	"name": "Mantis OCR",
+	"version": "0.1",
+	"description": "This extension reads text from images for people who are visually impaired.",
+
+	"background": {
+		"scripts": ["eventPage.js"],
+		"persistent": false  // false -> event page
+	},
+
+	"permissions": [
+		"contextMenus"
+	]
+}
