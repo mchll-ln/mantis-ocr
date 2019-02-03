@@ -1,14 +1,23 @@
-var contextMenuItem = {
-	"id": "describeImageText",
-	"title": "Read the image text with Mantis OCR",
-	"contexts": ["image"],
-};
-
-chrome.contextMenus.create(contextMenuItem);
+chrome.contextMenus.create({
+	"id": "getImageText",
+	"title": "Read the image text",
+	"contexts": ["image"]
+});
+	
+chrome.contextMenus.create({
+	"id": "getImageContent",
+	"title": "Get the image content",
+	"contexts": ["image"]
+});
 
 chrome.contextMenus.onClicked.addListener(function(request){
-	if (request.menuItemId == "describeImageText" && request.srcUrl) {
+	if (!request.srcUrl) {
+		alert('Error: Image does not have a valid URL.')
+	} else if  (request.menuItemId == "getImageText") {
 		var imgSrc = request.srcUrl;
-		alert('success! Url: ' + imgSrc);  // for testing
+		alert('Success! Get text from url: ' + imgSrc);  // for testing
+	} else if (request.menuItemId == "getImageContent") {
+		var imgSrc = request.srcUrl;
+		alert('Success! Get content from url: ' + imgSrc);
 	}
 })
